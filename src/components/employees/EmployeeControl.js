@@ -4,17 +4,17 @@ import NewEmployeeForm from './NewEmployeeForm';
 // import TicketDetail from './TicketDetail';
 import React, { useState } from 'react'
 
-function TicketControl() {
+function EmployeeControl() {
 
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
-  const [mainTicketList, setMainTicketList] = useState([]);
-  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [mainEmployeeList, setMainEmployeeList] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [editing, setEditing] = useState(false);
 
   const handleClick = () => {
-    if (selectedTicket != null) {
+    if (selectedEmployee != null) {
       setFormVisibleOnPage(false);
-      setSelectedTicket(null);
+      setSelectedEmployee(null);
       setEditing(false);
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
@@ -24,3 +24,4 @@ function TicketControl() {
 
 
 }
+export default EmployeeControl;
