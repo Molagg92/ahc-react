@@ -21,10 +21,10 @@ function EmployeeControl() {
     }
   }
 
-  // const handleAddingNewEmployeeToList = (newEmployee) => {
-  //   const newMainEmployeeList = mainEmployeeList.concat(newEmployee);
-  //   setMainEmployeeList(newMainEmployeeList);
-  //   setFormVisibleOnPage(false)
+  const handleAddingNewEmployeeToList = (newEmployee) => {
+    const newMainEmployeeList = mainEmployeeList.concat(newEmployee);
+    setMainEmployeeList(newMainEmployeeList);
+    setFormVisibleOnPage(false)
   }
 
   const handleChangingSelectedEmployee = (id) => {
