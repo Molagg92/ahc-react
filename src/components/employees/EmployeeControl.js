@@ -1,6 +1,6 @@
 import NewEmployeeForm from './NewEmployeeForm';
 import EmployeeList from './EmployeeList';
-// import EditTicketForm from './EditTicketForm';
+// import EditEmployeeForm from './EditEmployeeForm';
 import EmployeeDetail from './EmployeeDetail';
 import React, { useState } from 'react'
 
@@ -21,6 +21,12 @@ function EmployeeControl() {
     }
   }
 
+  const handleDeletingEmployee = (id) => {
+    const newMainEmployeeList = mainEmployeeList.filter(employee => employee.id !== id);
+    setMainEmployeeList(newMainEmployeeList);
+    setSelectedEmployee(null);
+  }
+
   const handleAddingNewEmployeeToList = (newEmployee) => {
     const newMainEmployeeList = mainEmployeeList.concat(newEmployee);
     setMainEmployeeList(newMainEmployeeList);
@@ -31,6 +37,7 @@ function EmployeeControl() {
     const selection = mainEmployeeList.filter(employee => employee.id === id)[0];
     setSelectedEmployee(selection);
   }
+  
 
   let currentlyVisibleState = null;
   let buttonText = null; 
@@ -41,7 +48,7 @@ function EmployeeControl() {
   } else if (selectedEmployee != null) {
     currentlyVisibleState = <EmployeeDetail 
     employee={selectedEmployee} 
-    // onClickingDelete={handleDeletingEmployee}
+    onClickingDelete={handleDeletingEmployee}
     // onClickingEdit = {handleEditClick} 
     />
     buttonText = "Return to Employee List";
