@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Employee from "./Employee";
+
 
 function EmployeeDetail(props){
   const { employee, onClickingDelete, onClickingEdit } = props; 

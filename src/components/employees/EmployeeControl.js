@@ -1,6 +1,6 @@
 import NewEmployeeForm from './NewEmployeeForm';
 import EmployeeList from './EmployeeList';
-// import EditEmployeeForm from './EditEmployeeForm';
+import EditEmployeeForm from './EditEmployeeForm';
 import EmployeeDetail from './EmployeeDetail';
 import React, { useState } from 'react'
 
@@ -19,6 +19,19 @@ function EmployeeControl() {
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
     }
+  }
+
+  const handleEditClick = () => {
+    setEditing(true);
+  }
+
+  const handleEditingEmployeeInList = (employeeToEdit) => {
+    const editedMainEmployeeList = mainEmployeeList
+    .filter(employee => employee.id !== selectedEmployee.id)
+    .concat(employeeToEdit);
+    setMainEmployeeList(editedMainEmployeeList);
+    setEditing(false);
+    setSelectedEmployee(null);
   }
 
   const handleDeletingEmployee = (id) => {
@@ -42,14 +55,18 @@ function EmployeeControl() {
   let currentlyVisibleState = null;
   let buttonText = null; 
 
-  if (formVisibleOnPage) {
+  if (editing ) {      
+    currentlyVisibleState = <EditEmployeeForm employee = {selectedEmployee} 
+    onEditEmployee = {handleEditingEmployeeInList} />
+    buttonText = "Return to Employee List";
+  } else if (formVisibleOnPage) {
     currentlyVisibleState = <NewEmployeeForm onNewEmployeeCreation={handleAddingNewEmployeeToList}/>;
     buttonText = "Return to Employee List"; 
   } else if (selectedEmployee != null) {
     currentlyVisibleState = <EmployeeDetail 
     employee={selectedEmployee} 
     onClickingDelete={handleDeletingEmployee}
-    // onClickingEdit = {handleEditClick} 
+    onClickingEdit = {handleEditClick} 
     />
     buttonText = "Return to Employee List";
   }else {
