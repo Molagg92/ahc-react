@@ -22,21 +22,21 @@ describe('Employee', () => {
     expect(getByText(testEmployee.issue)).toBeInTheDocument();
   });
 
-  // it('should call whenEmployeeClicked when clicked', () => {
-  //   // Arrange
-  //   const testEmployee = {
-  //     id: '1',
-  //     names: 'John Doe',
-  //     location: 'Example Location',
-  //     issue: 'Example Issue',
-  //   };
-  //   const mockClickHandler = jest.fn();
+  it('should call whenEmployeeClicked when clicked', () => {
+    // Arrange
+    const testEmployee = {
+      id: '1',
+      names: 'John Doe',
+      location: 'Example Location',
+      issue: 'Example Issue',
+    };
+    const mockClickHandler = jest.fn();
 
-  //   // Act
-  //   const { container } = render(<Employee {...testEmployee} whenEmployeeClicked={mockClickHandler} />);
-  //   fireEvent.click(container.querySelector('div'));
+    // Act
+    const { container } = render(<Employee {...testEmployee} whenEmployeeClicked={mockClickHandler} />);
+    fireEvent.click(container.querySelector('div'));
 
-  //   // Assert
-  //   expect(mockClickHandler).toHaveBeenCalledWith(testEmployee.id);
-  // });
+    // Assert
+    expect(mockClickHandler).toHaveBeenCalledWith(testEmployee.id);
+  });
 });

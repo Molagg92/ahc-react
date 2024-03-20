@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 function Employee(props){
   return (
     <React.Fragment>
-      <div onClick = {() => props.whenEmployeeClicked(props.id)}>
+      {/* <div onClick = {() => props.whenEmployeeClicked(props.id)}>
         <h3>{props.location} - {props.names}</h3>
         <p><em>{props.issue}</em></p>
         <hr/>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }
