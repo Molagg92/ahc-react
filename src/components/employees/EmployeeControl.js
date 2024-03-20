@@ -1,7 +1,7 @@
 import NewEmployeeForm from './NewEmployeeForm';
 import EmployeeList from './EmployeeList';
 // import EditTicketForm from './EditTicketForm';
-// import TicketDetail from './TicketDetail';
+import EmployeeDetail from './EmployeeDetail';
 import React, { useState } from 'react'
 
 function EmployeeControl() {
@@ -38,7 +38,14 @@ function EmployeeControl() {
   if (formVisibleOnPage) {
     currentlyVisibleState = <NewEmployeeForm onNewEmployeeCreation={handleAddingNewEmployeeToList}/>;
     buttonText = "Return to Employee List"; 
-  } else {
+  } else if (selectedEmployee != null) {
+    currentlyVisibleState = <EmployeeDetail 
+    employee={selectedEmployee} 
+    // onClickingDelete={handleDeletingEmployee}
+    // onClickingEdit = {handleEditClick} 
+    />
+    buttonText = "Return to Employee List";
+  }else {
     currentlyVisibleState =  <EmployeeList 
     onEmployeeSelection={handleChangingSelectedEmployee} 
     employeeList={mainEmployeeList} />;
