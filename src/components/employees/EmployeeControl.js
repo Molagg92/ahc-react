@@ -66,8 +66,7 @@ function EmployeeControl() {
     currentlyVisibleState = <EmployeeDetail 
     employee={selectedEmployee} 
     onClickingDelete={handleDeletingEmployee}
-    onClickingEdit = {handleEditClick} 
-    />
+    onClickingEdit = {handleEditClick} />
     buttonText = "Return to Employee List";
   }else {
     currentlyVisibleState =  <EmployeeList 
