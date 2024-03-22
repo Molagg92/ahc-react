@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function StandardService(props){
+function DeepCleaningService(props){
   return (
     <React.Fragment>
       <div onClick = {() => props.whenServiceClicked(props.id)}>
@@ -13,11 +13,11 @@ function StandardService(props){
   );
 }
 
-StandardService.propTypes = {
+DeepCleaningService.propTypes = {
   names: PropTypes.string,
   location: PropTypes.string,
   issue: PropTypes.string,
   id: PropTypes.string,
   whenServiceClicked: PropTypes.func,
 };
-export default StandardService;
+export default DeepCleaningService;

@@ -1,5 +1,5 @@
-// import NewServiceForm from './NewServiceForm';
-// import ServiceList from './ServiceList';
+import NewServiceForm from './NewServiceForm';
+import ServiceList from './ServiceList';
 // import EditServiceForm from './EditServiceForm';
 // import ServiceDetail from './ServiceDetail';
 import React, { useState } from 'react'
@@ -15,7 +15,7 @@ function ServiceControl() {
     if (selectedService != null) {
       setFormVisibleOnPage(false);
       setSelectedService(null);
-      setEditing(false);
+      // setEditing(false);
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
     }
@@ -64,13 +64,15 @@ function ServiceControl() {
   if (formVisibleOnPage) {
     currentlyVisibleState = <NewServiceForm onNewServiceCreation={handleAddingNewServiceToList}/>;
     buttonText = "Return to Service List"; 
-  } else if (selectedService != null) {
-    currentlyVisibleState = <ServiceDetail 
-    service={selectedService} 
-    onClickingDelete={handleDeletingService}
-    onClickingEdit = {handleEditClick} />
-    buttonText = "Return to Service List";
-  }else {
+  // } 
+  // else if (selectedService != null) {
+  //   currentlyVisibleState = <ServiceDetail 
+  //   service={selectedService} 
+  //   onClickingDelete={handleDeletingService}
+  //   onClickingEdit = {handleEditClick} />
+  //   buttonText = "Return to Service List";
+  }
+  else {
     currentlyVisibleState =  <ServiceList 
     onServiceSelection={handleChangingSelectedService} 
     serviceList={mainServiceList} />;
