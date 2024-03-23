@@ -9,7 +9,7 @@ function ServiceDetail(props){
     <React.Fragment>
       <h1>Service Detail</h1>
       <h3>{service.location} - {service.names}</h3>
-      <p><em>{service.issue}</em></p>
+      <p><em>{service.issue} - {service.type}</em></p>
       <button onClick={onClickingEdit}>Update Service</button>
       <button onClick={()=> onClickingDelete(service.id)}>Close Service</button>
       <hr/>

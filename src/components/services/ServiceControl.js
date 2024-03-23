@@ -1,6 +1,6 @@
 import NewServiceForm from './NewServiceForm';
 import ServiceList from './ServiceList';
-// import EditServiceForm from './EditServiceForm';
+import EditServiceForm from './EditServiceForm';
 import ServiceDetail from './ServiceDetail';
 import React, { useState } from 'react'
 
@@ -9,30 +9,30 @@ function ServiceControl() {
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [mainServiceList, setMainServiceList] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
-  // const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const handleClick = () => {
     if (selectedService != null) {
       setFormVisibleOnPage(false);
       setSelectedService(null);
-      // setEditing(false);
+      setEditing(false);
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
     }
   }
 
-  // const handleEditClick = () => {
-  //   setEditing(true);
-  // }
+  const handleEditClick = () => {
+    setEditing(true);
+  }
 
-  // const handleEditingEmployeeInList = (employeeToEdit) => {
-  //   const editedMainEmployeeList = mainEmployeeList
-  //   .filter(employee => employee.id !== selectedEmployee.id)
-  //   .concat(employeeToEdit);
-  //   setMainEmployeeList(editedMainEmployeeList);
-  //   setEditing(false);
-  //   setSelectedEmployee(null);
-  // }
+  const handleEditingServiceInList = (serviceToEdit) => {
+    const editedMainServiceList = mainServiceList
+    .filter(service => service.id !== selectedService.id)
+    .concat(serviceToEdit);
+    setMainServiceList(editedMainServiceList);
+    setEditing(false);
+    setSelectedService(null);
+  }
 
   const handleDeletingService = (id) => {
     const newMainServiceList = mainServiceList.filter(service => service.id !== id);
@@ -55,11 +55,11 @@ function ServiceControl() {
   let currentlyVisibleState = null;
   let buttonText = null; 
 
-  // if (editing ) {      
-  //   currentlyVisibleState = <EditEmployeeForm employee = {selectedEmployee} 
-  //   onEditEmployee = {handleEditingEmployeeInList} />
-  //   buttonText = "Return to Employee List";
-  // } else
+  if (editing ) {      
+    currentlyVisibleState = <EditServiceForm service = {selectedService} 
+    onEditService = {handleEditingServiceInList} />
+    buttonText = "Return to Service List";
+  } else
   
   if (formVisibleOnPage) {
     currentlyVisibleState = <NewServiceForm onNewServiceCreation={handleAddingNewServiceToList}/>;
@@ -69,7 +69,7 @@ function ServiceControl() {
     currentlyVisibleState = <ServiceDetail 
     service={selectedService} 
     onClickingDelete={handleDeletingService}
-    // onClickingEdit = {handleEditClick}
+    onClickingEdit = {handleEditClick}
      />
     buttonText = "Return to Service List";
   }
