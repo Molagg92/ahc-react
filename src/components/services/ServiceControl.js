@@ -1,7 +1,7 @@
 import NewServiceForm from './NewServiceForm';
 import ServiceList from './ServiceList';
 // import EditServiceForm from './EditServiceForm';
-// import ServiceDetail from './ServiceDetail';
+import ServiceDetail from './ServiceDetail';
 import React, { useState } from 'react'
 
 function ServiceControl() {
@@ -34,11 +34,11 @@ function ServiceControl() {
   //   setSelectedEmployee(null);
   // }
 
-  // const handleDeletingEmployee = (id) => {
-  //   const newMainEmployeeList = mainEmployeeList.filter(employee => employee.id !== id);
-  //   setMainEmployeeList(newMainEmployeeList);
-  //   setSelectedEmployee(null);
-  // }
+  const handleDeletingService = (id) => {
+    const newMainServiceList = mainServiceList.filter(service => service.id !== id);
+    setMainServiceList(newMainServiceList);
+    setSelectedService(null);
+  }
 
   const handleAddingNewServiceToList = (newService) => {
     const newMainServiceList = mainServiceList.concat(newService);
@@ -64,13 +64,14 @@ function ServiceControl() {
   if (formVisibleOnPage) {
     currentlyVisibleState = <NewServiceForm onNewServiceCreation={handleAddingNewServiceToList}/>;
     buttonText = "Return to Service List"; 
-  // } 
-  // else if (selectedService != null) {
-  //   currentlyVisibleState = <ServiceDetail 
-  //   service={selectedService} 
-  //   onClickingDelete={handleDeletingService}
-  //   onClickingEdit = {handleEditClick} />
-  //   buttonText = "Return to Service List";
+  } 
+  else if (selectedService != null) {
+    currentlyVisibleState = <ServiceDetail 
+    service={selectedService} 
+    onClickingDelete={handleDeletingService}
+    // onClickingEdit = {handleEditClick}
+     />
+    buttonText = "Return to Service List";
   }
   else {
     currentlyVisibleState =  <ServiceList 
